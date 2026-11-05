@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-primary: #1A73E8;
+    --color-primary-hover: #1558B0;
+    --color-light-blue: #E8F0FE;
+    --color-bg: #F8F9FA;
+    --color-surface: #FFFFFF;
+    --color-surface-secondary: #F1F3F4;
+    --color-text-primary: #202124;
+    --color-text-secondary: #5F6368;
+    --color-border: #DADCE0;
+    --color-success: #188038;
+    --color-light-green: #E6F4EA;
+    --color-warning: #F9AB00;
+    --color-light-warning: #FEF7E0;
+    --color-danger: #D93025;
+    --color-light-danger: #FCE8E6;
+  }
+
+  body {
+    background-color: #F8F9FA;
+    color: #202124;
+    font-family: -apple-system, BlinkMacSystemFont, "Google Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Page entrance animations */
+@keyframes pageFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-page-enter {
+  animation: pageFadeUp 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Card staggered entrance */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-card-enter {
+  animation: cardFadeIn 350ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Google-style micro-interactions */
+.btn-interactive {
+  transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, box-shadow;
+}
+
+.btn-interactive:hover {
+  transform: translateY(-1px);
+}
+
+.btn-interactive:active {
+  transform: scale(0.97) translateY(0);
+}
+
+.card-interactive {
+  transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 220ms cubic-bezier(0.4, 0, 0.2, 1), border-color 220ms ease;
+}
+
+.card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(60, 64, 67, 0.12);
+}
+
+/* Soft GPS pulsing halo */
+@keyframes gpsPulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.1;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+}
+
+.animate-gps-pulse {
+  animation: gpsPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Modal pop animation */
+@keyframes modalPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-modal-pop {
+  animation: modalPop 220ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Modern Google-style clean scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F3F4;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #DADCE0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #BDC1C6;
+}
+
+/* Leaflet map popup & controls styling override for Google theme */
+.leaflet-popup-content-wrapper {
+  background: #FFFFFF !important;
+  color: #202124 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 16px rgba(60, 64, 67, 0.24) !important;
+  border: 1px solid #DADCE0 !important;
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.leaflet-popup-tip {
+  background: #FFFFFF !important;
+}
+
+.leaflet-control-zoom a {
+  background-color: #FFFFFF !important;
+  color: #5F6368 !important;
+  border-color: #DADCE0 !important;
+  border-radius: 8px !important;
+  transition: all 150ms ease;
+}
+
+.leaflet-control-zoom a:hover {
+  background-color: #F8F9FA !important;
+  color: #1A73E8 !important;
+  transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
